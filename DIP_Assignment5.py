@@ -8,7 +8,7 @@ def skin_detect(image_path, ground_truth_path):
 
     # 讀取圖片
     image = cv2.imread(image_path)
-    ground_truth = cv2.imread(ground_truth_path, cv2.IMREAD_GRAYSCALE)
+    ground_truth = cv2.imread(ground_truth_path)
 
     # 顏色空間轉換
     image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
