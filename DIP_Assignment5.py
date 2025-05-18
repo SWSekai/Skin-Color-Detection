@@ -49,7 +49,7 @@ if __name__ == '__main__':
         ground_truth_path = f"./GroundTruth/pic{i}.png"
         
         skin_masked, iou = skin_detect(image_path, ground_truth_path)
-        skin_masked_, iou_ = skin_detect_optimized(image_path, ground_truth_path)
+        skin_masked_, iou_ = skin_detect(image_path, ground_truth_path)
         
         # print(f"picture{i} image\'s IOU: {iou}")
         print(f"picture{i} image\'s IOU: {iou_}")

@@ -26,7 +26,7 @@ def skin_detect_optimized(image_path, ground_truth_path=None):
             # 論文中的膚色條件
             rgb_condition = r > 97 and g > 40 and b > 20 and r > g and r > b and abs(int(r) - int(g)) > 15
             hsv_condition = 0.0 <= h <= 50.0 and 0.23 <= s <= 0.68
-            ycbcr_condition = cr > 140 and cb > 85 and y > 80 and cr <= (1.5862 * cb) + 20 and cr >= (0.3448 * cb) + 76.2069 and cr >= (-4.5652 * cb) + 234.5652 and cr <= (-1.15 * cb) + 301.75 and cr <= (-2.2857 * cb) + 432.85
+            ycbcr_condition = cr > 135 and cb > 85 and y > 80 and cr <= (1.5862 * cb) + 20 and cr >= (0.3448 * cb) + 76.2069 and cr >= (-4.5652 * cb) + 234.5652 and cr <= (-1.15 * cb) + 301.75 and cr <= (-2.2857 * cb) + 432.85
 
             # 條件組合
             if rgb_condition or (hsv_condition and ycbcr_condition):
