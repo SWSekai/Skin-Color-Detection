@@ -50,7 +50,6 @@ def skin_detect(image_path, ground_truth_path):
     
     # 後處理
     kernel = np.ones((5, 5), np.uint8)
-
     skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel, iterations=2) # 開運算
     skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_CLOSE, kernel, iterations=2) # 閉運算
         

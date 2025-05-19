@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 from method import skin_detect
 
@@ -43,6 +44,10 @@ def main():
         plt.subplot(1, 3, 1), plt.title("Image"), plt.imshow(cv2.imread(image_path)), plt.axis("off"), plt.xticks([]), plt.yticks([])
         plt.subplot(1, 3, 2), plt.title("Ground truth"), plt.imshow(cv2.imread(ground_truth_path, cv2.IMREAD_GRAYSCALE), cmap="gray"), plt.axis("off"), plt.xticks([]), plt.yticks([])
         plt.subplot(1, 3, 3), plt.title("Result"), plt.imshow(skin_masked, cmap="gray"), plt.axis("off"), plt.xticks([]), plt.yticks([])
+        
+        output_dir = "./Result_Compared"
+        output_path = os.path.join(output_dir, f"pic{i}.png")
+        plt.savefig(output_path, bbox_inches='tight')
         
         plt.show()
         
