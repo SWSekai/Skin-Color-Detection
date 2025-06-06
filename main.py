@@ -12,7 +12,7 @@ def createWindow(image = None, title = None):
     plt.figure(figsize=(10, 6))
     
     if image is not None:
-        plt.imshow(image, cmap='gray')
+        plt.imshow(image)
         
     if title is not None:
         plt.title(title)
@@ -33,15 +33,16 @@ def main():
         image_path = f"./Photo/pic{i}.jpg"
         ground_truth_path = f"./GroundTruth/pic{i}.png"
         origin_result_path = f"./Result/pic{i}.jpg"
-        
+                
         skin_masked, iou = skin_detect(image_path, ground_truth_path)
 
         print(f"picture{i} image\'s IOU: {iou}")
 
+        photo = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
         
         createWindow(title=f"picture{i} image\'s IOU: {iou.round(4)}")
         
-        plt.subplot(1, 3, 1), plt.title("Image"), plt.imshow(cv2.imread(image_path)), plt.axis("off"), plt.xticks([]), plt.yticks([])
+        plt.subplot(1, 3, 1), plt.title("Image"), plt.imshow(photo), plt.axis("off"), plt.xticks([]), plt.yticks([])
         plt.subplot(1, 3, 2), plt.title("Ground truth"), plt.imshow(cv2.imread(ground_truth_path, cv2.IMREAD_GRAYSCALE), cmap="gray"), plt.axis("off"), plt.xticks([]), plt.yticks([])
         plt.subplot(1, 3, 3), plt.title("Result"), plt.imshow(skin_masked, cmap="gray"), plt.axis("off"), plt.xticks([]), plt.yticks([])
         
